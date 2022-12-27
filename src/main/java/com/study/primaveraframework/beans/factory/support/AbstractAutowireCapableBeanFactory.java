@@ -10,7 +10,6 @@ import main.java.com.study.primaveraframework.beans.factory.config.BeanPostProce
 import main.java.com.study.primaveraframework.beans.factory.config.BeanReference;
 
 import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 
 /**
  * 实现默认Bean创建的抽象bean工厂超类
