@@ -19,32 +19,6 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 
     private InstantiationStrategy instantiationStrategy = new CglibSubclassingInstantiationStrategy();
 
-    @Override
-    protected Object create(String beanName, BeanDefinition beanDefinition) throws BeanException {
-        Object bean = null;
-        try{
-            bean = beanDefinition.getBeanClass().getDeclaredConstructor().newInstance();
-
-
-        } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
-            throw new BeanException("Instantiation of bean failed", e);
-        }
-        registrySingleton(beanName, bean);
-        return bean;
-    }
-
-    @Override
-    protected Object create(String beanName, BeanDefinition beanDefinition, Object[] args) throws BeanException{
-        Object bean = null;
-        try{
-            bean = createBeanInstance(beanDefinition, beanName, args);
-        }catch (Exception e){
-            throw new BeanException("Instantiation of bean failed", e);
-        }
-        registrySingleton(beanName, bean);
-        return bean;
-    }
-
     protected Object createBeanInstance(BeanDefinition beanDefinition, String beanName, Object[] args){
         Constructor constructorToUse = null;
         Class<?> beanClass = beanDefinition.getBeanClass();
