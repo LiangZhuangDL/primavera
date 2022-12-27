@@ -3,7 +3,7 @@ package main.java.com.study.primaveraframework.beans.factory.xml;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.core.util.XmlUtil;
 import main.java.com.study.primaveraframework.beans.BeanException;
-import main.java.com.study.primaveraframework.beans.factory.PropertyValue;
+import main.java.com.study.primaveraframework.beans.PropertyValue;
 import main.java.com.study.primaveraframework.beans.factory.config.BeanDefinition;
 import main.java.com.study.primaveraframework.beans.factory.config.BeanReference;
 import main.java.com.study.primaveraframework.beans.factory.support.AbstractBeanDefinitionReader;
@@ -50,6 +50,13 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
         ResourceLoader resourceLoader = getResourceLoader();
         Resource resource = resourceLoader.getResource(location);
         loadBeanDefinitions(resource);
+    }
+
+    @Override
+    public void loadBeanDefinitions(String... locations) throws BeanException {
+        for (String location : locations) {
+            loadBeanDefinitions(location);
+        }
     }
 
     protected void doLoadBeanDefinitions(InputStream inputStream) throws ClassNotFoundException{

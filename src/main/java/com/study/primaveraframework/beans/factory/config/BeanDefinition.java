@@ -1,7 +1,6 @@
 package main.java.com.study.primaveraframework.beans.factory.config;
 
-import main.java.com.study.primaveraframework.beans.factory.PropertyValues;
-import main.java.com.study.primaveraframework.beans.factory.support.DefaultListableBeanFactory;
+import main.java.com.study.primaveraframework.beans.PropertyValues;
 
 public class BeanDefinition {
     private Class beanClass;

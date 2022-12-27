@@ -1,4 +1,4 @@
-package main.java.com.study.primaveraframework.beans.factory;
+package main.java.com.study.primaveraframework.beans;
 
 import java.util.ArrayList;
 import java.util.List;

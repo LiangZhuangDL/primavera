@@ -19,4 +19,14 @@ public interface BeanFactory {
      * @throws BeanException 不能获取Bean对象，则抛出异常
      */
     Object getBean(String name, Object... args)throws BeanException;
+
+    /**
+     * 返回指定泛型的对象
+     * @param beanName
+     * @param requiredType
+     * @return
+     * @param <T>
+     * @throws BeanException
+     */
+    <T> T getBean(String beanName, Class<T> requiredType) throws BeanException;
 }
