@@ -6,7 +6,6 @@ import main.java.com.study.primaveraframework.beans.factory.config.BeanFactoryPo
 import main.java.com.study.primaveraframework.beans.factory.config.BeanPostProcessor;
 import main.java.com.study.primaveraframework.context.ConfigurableApplicationContext;
 import main.java.com.study.primaveraframework.core.io.DefaultResourceLoader;
-
 import java.util.Map;
 
 public abstract class AbstractApplicationContext extends DefaultResourceLoader implements ConfigurableApplicationContext {
@@ -60,5 +59,15 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader i
     @Override
     public String[] getBeanDefinitionNames() {
         return getBeanFactory().getBeanDefinitionNames();
+    }
+
+    @Override
+    public void registerShutdownHook(){
+        Runtime.getRuntime().addShutdownHook(new Thread(this::close));
+    }
+
+    @Override
+    public void close(){
+        getBeanFactory().destroySingletons();
     }
 }
